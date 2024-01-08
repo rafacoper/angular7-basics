@@ -5,6 +5,7 @@ import { WishItem } from '../shared/models/wishItem';
 import { FormsModule } from '@angular/forms';
 import { WishListComponent } from './wish-list/wish-list.component';
 import { CrazyTaxyComponent } from './crazy-taxy/crazy-taxy.component';
+import { AddWishFormComponent } from './add-wish-form/add-wish-form.component';
 
 const filters = [
   (item : WishItem) => item,
@@ -19,7 +20,8 @@ const filters = [
     RouterOutlet,
     FormsModule,
     WishListComponent,
-    CrazyTaxyComponent
+    CrazyTaxyComponent,
+    AddWishFormComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
