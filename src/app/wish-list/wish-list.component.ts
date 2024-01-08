@@ -10,12 +10,12 @@ import { CommonModule } from '@angular/common';
   styleUrl: './wish-list.component.css'
 })
 export class WishListComponent implements OnInit {
-  @Input() wishes : WishItem[] = [];
+  @Input()
+  wishes: WishItem[] = [];
+
   constructor() {}
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   toggleItem(item: WishItem) {
     item.isComplete = !item.isComplete;
