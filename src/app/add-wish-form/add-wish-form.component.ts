@@ -10,12 +10,12 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './add-wish-form.component.html',
   styleUrl: './add-wish-form.component.css'
 })
-export class AddWishFormComponent implements OnInit {
+export class AddWishFormComponent {
   @Output() addWish = new EventEmitter<WishItem>()
 
-  constructor() {}
+  // constructor() {}
 
-  ngOnInit(): void {}
+  // ngOnInit(): void {}
 
 
   newWishText = '';
