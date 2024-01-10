@@ -1,14 +1,27 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { WishItem } from '../shared/models/wishItem';
 
 @Injectable({ providedIn: 'root' })
 export class WishService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  getWishes(): Observable<WishItem[]> {
-   return this.http.get<WishItem[]>('assets/wishes.json'); // Observable method
+  private getStandardOptions(): any {
+    return {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      })
+    };
+  }
+
+  getWishes() {
+    let options = this.getStandardOptions();
+    return this.http.get('assets/wishes.json', options); // Observable method
+  }
+
+  private addWishes() {
+    let options = this.getStandardOptions();
+    options.headers = options.headers.set('Authorization', 'value-need-for-authorization')
+    this.http.post('assets/wishes.json', options);
   }
 }
