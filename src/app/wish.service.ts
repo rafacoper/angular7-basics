@@ -1,5 +1,6 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { catchError, throwError } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class WishService {
@@ -23,7 +24,16 @@ export class WishService {
       }
     });
 
-    return this.http.get('assets/wishes.json', options); // Observable method
+    return this.http.get('assets/wishes1.json', options).pipe(catchError(this.handleError)); // Observable method
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    if(error.status === 0) {
+      console.error(`There is an issue with the client or network: `, error.error);
+    } else {
+      console.error('Server-side error: ', error.error);
+    }
+    return throwError(() => new Error('Cannot retrieve wishes from the server.'))
   }
 
   private addWishes() {
