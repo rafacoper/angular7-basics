@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
@@ -16,6 +16,13 @@ export class WishService {
 
   getWishes() {
     let options = this.getStandardOptions();
+
+    options.params = new HttpParams({
+      fromObject: {
+        format: 'json', // => 'assets/wishes.json?format=json'
+      }
+    });
+
     return this.http.get('assets/wishes.json', options); // Observable method
   }
 
