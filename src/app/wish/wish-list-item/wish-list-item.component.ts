@@ -1,14 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { EventService } from '../../shared/services/EventService';
-import { WishItem } from '../../shared/models/wishItem';
+import { EventService } from '../../../shared/services/EventService';
+import { WishItem } from '../../../shared/models/wishItem';
 
 @Component({
   selector: 'wish-list-item',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './wish-list-item.component.html',
-  styleUrl: './wish-list-item.component.css'
+  styleUrls: ['./wish-list-item.component.css']
 })
 export class WishListItemComponent implements OnInit{
   @Input() wish! : WishItem;
@@ -26,5 +26,6 @@ export class WishListItemComponent implements OnInit{
   }
 
   toggleFullfilled() {
+    this.wish.isComplete = !this.wish.isComplete;
   }
 }
