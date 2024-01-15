@@ -6,12 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { WishListComponent } from './wish-list/wish-list.component';
 import { CrazyTaxyComponent } from './crazy-taxy/crazy-taxy.component';
 import { AddWishFormComponent } from './add-wish-form/add-wish-form.component';
+import { WishFilterComponent } from './wish-filter/wish-filter.component';
 
-const filters = [
-  (item : WishItem) => item,
-  (item : WishItem) => !item.isComplete,
-  (item : WishItem) => item.isComplete
-]
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -21,7 +17,8 @@ const filters = [
     FormsModule,
     WishListComponent,
     CrazyTaxyComponent,
-    AddWishFormComponent
+    AddWishFormComponent,
+    WishFilterComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
@@ -33,21 +30,7 @@ export class AppComponent {
     new WishItem('Listen Gramatik', true),
   ]
 
-  listFilter : any = '0';
+  message = 'Maybe Im crazy';
 
-  newWishText : string = '';
-
-  title = 'wishlist';
-
-  get wishes() : WishItem[] {
-    return this.items.filter(filters[this.listFilter])
-  };
-
-  addNewWish() {
-    this.items.push(new WishItem(this.newWishText))
-    this.newWishText = ''
-  }
-
-  message = "Hello"
-
+  filter : any;
 }
