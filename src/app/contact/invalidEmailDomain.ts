@@ -1,6 +1,6 @@
-import { AbstractControl, ValidationErrors, ValidatorFn } from "@angular/forms";
+import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
-export function createInvalidDomainValidator(hosts: string[]) : ValidatorFn {
+export function createInvalidDomainValidator(hosts: string[]): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
     const value = control.value?.toLowerCase();
 
@@ -8,8 +8,9 @@ export function createInvalidDomainValidator(hosts: string[]) : ValidatorFn {
       return null;
     }
 
-    const matches = hosts.some(host => value.indexOf(`@${host} > -1`));
+    const matches = hosts.some((host) => value.indexOf(`@${host}`) > -1);
 
-    return matches ? { invalidEmailDomain : true } : null;
-  }
+    return matches ? { invalidEmailDomain: true } : null;
+  };
 }
+
