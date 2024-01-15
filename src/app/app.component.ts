@@ -3,19 +3,18 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 
 import { WishModule } from './wish/wish.module';
-import { FormsModule } from '@angular/forms';
+import { ContactModule } from './contact/contact.module';
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
     CommonModule,
     RouterOutlet,
-    FormsModule,
-    WishModule
+    WishModule,
+    ContactModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
-
 })
 export class AppComponent implements OnInit {
   constructor() {}
