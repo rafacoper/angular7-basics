@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { WishItem } from '../../shared/models/wishItem';
+import { WishItem } from '../../../shared/models/wishItem';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -13,10 +13,9 @@ import { FormsModule } from '@angular/forms';
 export class AddWishFormComponent {
   @Output() addWish = new EventEmitter<WishItem>()
 
-  // constructor() {}
+  constructor() {}
 
-  // ngOnInit(): void {}
-
+  ngOnInit(): void {}
 
   newWishText = '';
 
